@@ -14,10 +14,10 @@ from ds_create import *
 DSC_HOME = "~/ds-create"
 
 
-CWD = pathlib.Path(".").absolute()
+CWD = pathlib.Path(".")
 
 # Get pathlib paths
-dsc_home = pathlib.Path(DSC_HOME).expanduser()
+dsc_home = pathlib.Path(DSC_HOME) #.expanduser()
 dsc_db_path = dsc_home / "dsc-templates.db"
 dsc_templates = dsc_home / "templates/"
 
@@ -52,6 +52,7 @@ parser.add_argument(
     help="Name of template to use for cmd."
 )
 
+print("CWD:",CWD)
 
 # Get & clean arguments
 args = parser.parse_args()

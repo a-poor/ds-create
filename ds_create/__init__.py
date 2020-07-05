@@ -109,6 +109,10 @@ def unzip_folder(zip_path,dest_path=None):
     with zipfile.ZipFile(zip_path,'r') as zf:
         zf.extractall(dest_path)
 
+def delete_file(file):
+    file = pathlib.Path(file)
+    file.unlink(missing_ok=True)
+
 
 ##########################
 ### Template Functions ###
@@ -124,12 +128,17 @@ def add_template(db,name,src_path,dest_path,created=None):
         db,
         name,
         created,
-        str(src_path),
-        str(dest_path)
+        str(src_path.absolute()),
+        str(dest_path.absolute())
         )
 
 def del_template(db,name):
     del_from_db(db,name)
+    _, _, template_path = get_template(
+        db,
+        name
+        )
+    delete_file(template_path)
 
 def clear_templates(db):
     n = count_templates(db)
@@ -152,8 +161,8 @@ def update_template(db,name,src_path,dest_path):
         db,
         name,
         created,
-        str(src_path),
-        str(dest_path)
+        str(src_path.absolute()),
+        str(dest_path.absolute())
         )
 
 def clone_template(db,name,path="."):
@@ -185,9 +194,10 @@ def list_templates(db):
             ),
             template_path
         )
-    print("%-20s  %-20s  %-20s\n" % ("NAME","TIMESTAMP","SRC PATH"))
+    print("%-20s  %-20s  %-20s" % ("NAME","TIMESTAMP","SRC PATH"))
     for r in data:
         print("%-20s  %-20s  %s" % r)
+
 
 def list_template_files(db,name):
     created, src, tmp = get_template(db,name)
@@ -197,7 +207,7 @@ def list_template_files(db,name):
         DT_FORMAT
         )
     src = pathlib.Path(src)
-    tmp = pathlib.Path(src)
+    tmp = pathlib.Path(tmp)
     print(f"TEMPLATE: {name}")
     print(f"CREATED: {created}")
     print(f"SRC DIR: {src}")
