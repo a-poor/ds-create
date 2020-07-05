@@ -7,3 +7,4 @@ eggs
 *.pyc
 tmp/
 
+test/*

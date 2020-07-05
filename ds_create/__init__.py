@@ -16,7 +16,7 @@ def template_dest_path(location,name):
 ##########################
 
 def connect_to_db(db_path):
-    db = sqlite3.connect(db_path)
+    db = sqlite3.connect(str(db_path))
     c = db.cursor()
     c.execute("""
     CREATE TABLE IF NOT EXISTS "templates" (
