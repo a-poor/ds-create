@@ -1,0 +1,8 @@
+.DS_Store
+bin
+dist
+eggs
+*.pyo
+*.pyc
+tmp/
+
