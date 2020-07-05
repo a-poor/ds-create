@@ -5,7 +5,7 @@ import zipfile
 import sqlite3
 import pathlib
 
-__version__ = "0.1.5"
+__version__ = "0.2.0"
 
 DT_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -118,7 +118,8 @@ def unzip_folder(zip_path,dest_path=None):
 
 def delete_file(file):
     file = pathlib.Path(file)
-    file.unlink(missing_ok=True)
+    if file.exists():
+        file.unlink()
 
 
 ##########################

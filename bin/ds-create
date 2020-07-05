@@ -25,6 +25,7 @@ dsc_templates = dsc_home / "templates/"
 if not dsc_home.exists():
     print("Can't find ~/ds-create")
     print("Making folder ~/ds-create")
+    print()
     dsc_home.mkdir(exist_ok=True)
     dsc_templates.mkdir(exist_ok=True)
 
