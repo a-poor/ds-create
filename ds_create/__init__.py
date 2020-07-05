@@ -5,7 +5,7 @@ import zipfile
 import sqlite3
 import pathlib
 
-__version__ = "0.0.5"
+__version__ = "0.1.0"
 
 DT_FORMAT = "%Y-%m-%d %H:%M:%S"
 

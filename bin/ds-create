@@ -17,7 +17,7 @@ DSC_HOME = "~/ds-create"
 CWD = pathlib.Path(".")
 
 # Get pathlib paths
-dsc_home = pathlib.Path(DSC_HOME) #.expanduser()
+dsc_home = pathlib.Path(DSC_HOME).expanduser()
 dsc_db_path = dsc_home / "dsc-templates.db"
 dsc_templates = dsc_home / "templates/"
 
