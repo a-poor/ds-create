@@ -7,7 +7,7 @@ A simple CLI program (inspired by _create-react-app_) for creating program templ
 ## To Install
 
 ```bash
-pip install ds_create
+pip install ds-create
 ```
 
 ## To Run
