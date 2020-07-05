@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ds_create",
-    version="0.2.0",
+    version="0.2.1",
     author="Austin Poor",
     author_email="austinpoor@gmail.com",
     description="A simple CLI program for creating program templates.",
