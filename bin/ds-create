@@ -22,8 +22,11 @@ dsc_db_path = dsc_home / "dsc-templates.db"
 dsc_templates = dsc_home / "templates/"
 
 # Make if doesn't exist
-dsc_home.mkdir(exist_ok=True)
-dsc_templates.mkdir(exist_ok=True)
+if not dsc_home.exists():
+    print("Can't find ~/ds-create")
+    print("Making folder ~/ds-create")
+    dsc_home.mkdir(exist_ok=True)
+    dsc_templates.mkdir(exist_ok=True)
 
 # Connect to the database
 db = connect_to_db(dsc_db_path)
@@ -51,8 +54,6 @@ parser.add_argument(
     default=None,
     help="Name of template to use for cmd."
 )
-
-print("CWD:",CWD)
 
 # Get & clean arguments
 args = parser.parse_args()

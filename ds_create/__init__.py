@@ -5,7 +5,7 @@ import zipfile
 import sqlite3
 import pathlib
 
-__version__ = "0.1.1"
+__version__ = "0.1.4"
 
 DT_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -87,6 +87,11 @@ def count_templates(db):
     c.execute("SELECT COUNT(*) FROM templates;")
     return c.fetchone()[0]
 
+def get_names(db):
+    c = db.cursor()
+    c.execute("SELECT name FROM templates;")
+    return [n[0] for n in c.fetchall()]
+
 def clear_db(db):
     c = db.cursor()
     c.execute("DELETE FROM templates;")
@@ -135,11 +140,11 @@ def add_template(db,name,src_path,dest_path,created=None):
         )
 
 def del_template(db,name):
-    del_from_db(db,name)
     _, _, template_path = get_template(
         db,
         name
         )
+    del_from_db(db,name)
     delete_file(template_path)
 
 def clear_templates(db):
@@ -149,7 +154,9 @@ def clear_templates(db):
         ).strip().lower()
     if r in ['y','yes']:
         print("Deleting")
-        clear_db(db)
+        all_names = get_names(db)
+        for n in names:
+            del_template(db,n)
     else:
         print("Canceled.")
 
