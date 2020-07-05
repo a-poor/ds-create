@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+
+import time
+from datetime import datetime
+import zipfile
+import sqlite3
+import pathlib
+import argparse
+
+from ds_create import *
+
+
+# Defaults
+DSC_HOME = "~/ds-create"
+
+
+CWD = pathlib.Path(".").absolute()
+
+# Get pathlib paths
+dsc_home = pathlib.Path(DSC_HOME).expanduser()
+dsc_db_path = dsc_home / "dsc-templates.db"
+dsc_templates = dsc_home / "templates/"
+
+# Make if doesn't exist
+dsc_home.mkdir(exist_ok=True)
+dsc_templates.mkdir(exist_ok=True)
+
+# Connect to the database
+db = connect_to_db(dsc_db_path)
+c = db.cursor()
+
+
+#######################
+### Argument Parser ###
+#######################
+
+parser = argparse.ArgumentParser(
+    prog="ds-create",
+    description="CLI to save app templates."
+)
+parser.add_argument(
+    "cmd",
+    default="",
+    choices=['snap','create','update','delete','list'],
+    help="Template operation to perform"
+)
+parser.add_argument(
+    "-n",
+    "--name",
+    dest="name",
+    default=None,
+    help="Name of template to use for cmd."
+)
+
+
+# Get & clean arguments
+args = parser.parse_args()
+cmd = args.cmd.strip().lower()
+if args.name is None:
+    name = None
+else:
+    name = args.name.strip().lower()
+
+# Choose an action
+if cmd == "snap":
+    assert name is not None, "Must supply name for new template"
+    assert not name_exists(db,name), f"Name \"{name}\" already exists. To update use cmd \"update\""
+    
+    print(f"Saving template \"{name}\"")
+    add_template(
+        db,
+        name,
+        src_path=CWD,
+        dest_path=template_dest_path(dsc_templates,name)
+        )
+
+elif cmd == "create":
+    assert name_exists(db,name), f"Couldn't find template \"{name}\""
+    
+    print(f"Cloning template \"{name}\"")
+    clone_template(db,name,CWD)
+
+elif cmd == "update":
+    assert name_exists(db,name), f"Couldn't find template \"{name}\""
+    
+    print(f"Updating template \"{name}\"")
+    update_template(db,
+        name,
+        src_path=CWD,
+        dest_path=template_dest_path(dsc_templates,name)
+        )
+
+elif cmd == "delete":
+    if name is None:
+        clear_templates(db)
+
+    else:
+        assert name_exists(db,name), f"Couldn't find template \"{name}\""    
+        print(f"Deleting template \"{name}\"")
+        del_template(db,name)
+
+elif cmd == "list":
+    if name is None:
+        list_templates(db)
+    else:
+        assert name_exists(db,name), f"Couldn't find template \"{name}\""
+        list_template_files(db,name)
+
+else:
+    raise Exception(f"Error: Didn't understand command \"{cmd}\"")
+
+
+db.close()
+
+
