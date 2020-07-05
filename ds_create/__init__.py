@@ -5,7 +5,7 @@ import zipfile
 import sqlite3
 import pathlib
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 
 DT_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -155,7 +155,7 @@ def clear_templates(db):
     if r in ['y','yes']:
         print("Deleting")
         all_names = get_names(db)
-        for n in names:
+        for n in all_names:
             del_template(db,n)
     else:
         print("Canceled.")
