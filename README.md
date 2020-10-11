@@ -1,5 +1,10 @@
 # ds-create
 
+[![PyPi version](https://img.shields.io/pypi/v/ds-create)](https://pypi.org/project/ds-create/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ds-create)](https://pypi.org/project/ds-create/)
+[![PyPI - License](https://img.shields.io/pypi/l/ds-create)](https://pypi.org/project/ds-create/)
+[![GitHub repo size](https://img.shields.io/github/repo-size/a-poor/ds-create)](https://img.shields.io/github/repo-size/a-poor/ds-create)
+
 _created by Austin Poor_
 
 A simple CLI program (inspired by _create-react-app_) for creating program templates.
