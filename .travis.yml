@@ -1,10 +1,10 @@
 language: python
 python:
 - '3.7'
-deploy:
-  provider: pypi
-  username: __token__
-  password:
-    secure: ovKPEa9/suDJHhWzMIZgiAM9N61YUHF8R8ZCizkFe+xpgJt9Z8C8fXF0ANit0/9oCNNwESAbeD884B552zDVZM/4LDDQyJh5hiwtGuMikGApD/x2Q1Lw+WESKc+tZRm5jvVVmQd8j6+cUIzhwEAs0trF1oGhDcKmRrCb7MIyLH+sfnBifUnTrj/j+GnxRJU8XwDfN/YA0/WFdaDBvoqjOJB3pHx4UBCibeB3u2zsxvcRmgN++NNcKlMwwgTep3KGAt05MswYl1huK1q2AIDQTqaFMoTj0Y3sAVXIrJaD3KZ9CL+bcGZBJZi78vp3vcFm8TEJRkgKhCVqWNbc3KPkKrs6Z8f1hQyNUCvO3i8N0eD0Lpf1dwSTEw3NVw9FAPfZw4er7f6WDiRflPy8nwVWIu3AKYwF+frT/nCLB3NNjVvnDIGewrxYtYScmObng/v4x45KnwXOBqaZYwI1VpYwefAaDDopVIcBoJiO52jZoBdY6bmzbxza7dRxxXTV83Kytd+ueYdW3+xH5LJL2XutpBGCuw6Kdvj9cunMx8JtnnoZnFBMNX8EqZ5JGK1JCBO3oB5+MnX/kciC8avpkIQY0/eJrqEnU7hltwm75dTe517MlOnGl7c/JQl80l9TZ1m0fqtQ2OEbi4x2X10FaUg78Wlpg++ASDlidt3BYY39rbk=
-  on:
-    all_branches: true
+# deploy:
+#   provider: pypi
+#   username: __token__
+#   password:
+#     secure: ovKPEa9/suDJHhWzMIZgiAM9N61YUHF8R8ZCizkFe+xpgJt9Z8C8fXF0ANit0/9oCNNwESAbeD884B552zDVZM/4LDDQyJh5hiwtGuMikGApD/x2Q1Lw+WESKc+tZRm5jvVVmQd8j6+cUIzhwEAs0trF1oGhDcKmRrCb7MIyLH+sfnBifUnTrj/j+GnxRJU8XwDfN/YA0/WFdaDBvoqjOJB3pHx4UBCibeB3u2zsxvcRmgN++NNcKlMwwgTep3KGAt05MswYl1huK1q2AIDQTqaFMoTj0Y3sAVXIrJaD3KZ9CL+bcGZBJZi78vp3vcFm8TEJRkgKhCVqWNbc3KPkKrs6Z8f1hQyNUCvO3i8N0eD0Lpf1dwSTEw3NVw9FAPfZw4er7f6WDiRflPy8nwVWIu3AKYwF+frT/nCLB3NNjVvnDIGewrxYtYScmObng/v4x45KnwXOBqaZYwI1VpYwefAaDDopVIcBoJiO52jZoBdY6bmzbxza7dRxxXTV83Kytd+ueYdW3+xH5LJL2XutpBGCuw6Kdvj9cunMx8JtnnoZnFBMNX8EqZ5JGK1JCBO3oB5+MnX/kciC8avpkIQY0/eJrqEnU7hltwm75dTe517MlOnGl7c/JQl80l9TZ1m0fqtQ2OEbi4x2X10FaUg78Wlpg++ASDlidt3BYY39rbk=
+#   on:
+#     all_branches: true

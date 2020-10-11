@@ -8,3 +8,4 @@ eggs
 tmp/
 
 test/*
+build-and-push.sh
